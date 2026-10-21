@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAWEAR | by Sidu</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #260a15; /* Deep plum/burgundy */
+            color: #f7ecec; /* Soft blush cream */
+        }
+        h1, h2, h3, h4, .playfair { 
+            font-family: 'Playfair Display', serif; 
+        }
+        /* Custom scrollbar for a sleeker look */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1a060e; }
+        ::-webkit-scrollbar-thumb { background: #4a1829; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #68233b; }
+        
+        .rose-gold-text { color: #dfb3b5; }
+        .rose-gold-bg { background-color: #dfb3b5; }
+        .rose-gold-border { border-color: #dfb3b5; }
+        .plum-panel { background-color: #35101f; }
+        .plum-border { border-color: #4f1b2f; }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#dfb3b5] selection:text-[#260a15] overflow-x-hidden">
+
+    <!-- Navigation -->
+    <header class="fixed w-full top-0 z-40 bg-[#1a060e]/80 backdrop-blur-md border-b border-[#4f1b2f] transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <span class="playfair text-2xl font-bold tracking-widest uppercase rose-gold-text">NOVAWEAR</span>
+                <span class="text-[10px] text-[#dfb3b5] opacity-70 border border-[#dfb3b5]/40 px-2 py-0.5 rounded-full uppercase tracking-wider">by Sidu</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-[#f7ecec]/70 uppercase tracking-wide">
+                <a href="#collection" class="hover:text-[#dfb3b5] transition-colors">Collection</a>
+                <a href="https://www.instagram.com/novawear_by_sidu" target="_blank" class="hover:text-[#dfb3b5] transition-colors flex items-center gap-1">
+                    Instagram <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </nav>
+
+            <button onclick="toggleCart()" class="relative group flex items-center justify-center p-2">
+                <svg class="w-6 h-6 text-[#f7ecec]/80 group-hover:text-[#dfb3b5] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                <span id="cart-count" class="absolute top-0 right-0 rose-gold-bg text-[#260a15] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transform translate-x-1 -translate-y-1">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center min-h-[80vh] justify-center">
+        <div class="absolute inset-0 z-[-1] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#3a1120] via-[#260a15] to-[#1a060e]"></div>
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#35101f]/50 border border-[#dfb3b5]/30 text-xs rose-gold-text mb-8 uppercase tracking-widest backdrop-blur-sm">
+            <span class="w-1.5 h-1.5 rounded-full rose-gold-bg animate-pulse"></span> New Arrivals
+        </div>
+        
+        <h1 class="playfair text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl leading-[1.1] text-white">
+            Elegance in Every <br/> <span class="rose-gold-text italic font-normal">Silhouette</span>
+        </h1>
+        
+        <p class="mt-8 text-base sm:text-lg text-[#f7ecec]/80 max-w-xl font-light leading-relaxed">
+            Discover our premium collection of beautifully crafted dresses. Designed to make you feel effortlessly luxurious.
+        </p>
+        
+        <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
+            <button onclick="document.getElementById('collection').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto rose-gold-bg text-[#260a15] font-semibold px-10 py-4 rounded-full hover:bg-white transition-colors uppercase tracking-widest text-sm">
+                Shop The Collection
+            </button>
+        </div>
+    </section>
+
+    <!-- Collection Section -->
+    <section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-[#4f1b2f]">
+        <div class="flex flex-col items-center mb-16 text-center">
+            <h2 class="playfair text-3xl sm:text-4xl font-bold tracking-tight rose-gold-text">Exclusive Drops</h2>
+            <div class="w-12 h-px rose-gold-bg mt-6 opacity-50"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12" id="product-grid">
+            <!-- Dynamic Products Injected Here -->
+        </div>
+    </section>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-[#000000]/70 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- Slide-out Cart Sidebar -->
+    <aside id="cart-sidebar" class="fixed top-0 right-0 w-full sm:w-[400px] h-full bg-[#260a15] border-l plum-border z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col shadow-2xl">
+        <div class="flex items-center justify-between p-6 border-b plum-border bg-[#1a060e]">
+            <h3 class="playfair text-xl font-bold rose-gold-text italic tracking-wide">Your Cart</h3>
+            <button onclick="toggleCart()" class="text-[#f7ecec]/50 hover:text-white transition-colors p-1">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-6">
+            <!-- Cart items injected here -->
+            <div id="empty-cart-msg" class="text-center text-[#f7ecec]/50 mt-10 text-sm">
+                Your cart is waiting to be filled.
+            </div>
+        </div>
+
+        <div class="p-6 border-t plum-border bg-[#1a060e]/90 backdrop-blur-md">
+            <div class="flex justify-between items-center mb-6 text-sm font-medium">
+                <span class="text-[#f7ecec]/70 uppercase tracking-wider">Subtotal</span>
+                <span id="cart-total" class="text-lg rose-gold-text font-bold playfair">LKR 0</span>
+            </div>
+            <button onclick="openCheckout()" id="checkout-btn" class="w-full py-4 rose-gold-bg text-[#260a15] font-bold uppercase tracking-widest text-xs rounded-full hover:bg-white transition-colors disabled:bg-[#35101f] disabled:text-[#f7ecec]/30 disabled:cursor-not-allowed" disabled>
+                Proceed to Checkout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 bg-[#000000]/80 backdrop-blur-md" onclick="closeCheckout()"></div>
+        <div class="bg-[#260a15] border border-[#dfb3b5]/30 rounded-xl w-full max-w-2xl overflow-hidden relative z-10 max-h-[90vh] flex flex-col shadow-2xl">
+            
+            <div class="flex items-center justify-between p-6 border-b border-[#dfb3b5]/20 bg-[#1a060e]">
+                <h3 class="playfair text-2xl font-bold rose-gold-text italic">Secure Checkout</h3>
+                <button onclick="closeCheckout()" class="text-[#f7ecec]/50 hover:text-[#dfb3b5] transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto flex-1 custom-scrollbar">
+                <form id="checkout-form" onsubmit="processOrder(event)">
+                    
+                    <!-- Customer Information -->
+                    <div class="mb-8">
+                        <h4 class="text-xs font-bold text-[#dfb3b5] uppercase tracking-widest mb-4">Shipping Details</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs text-[#f7ecec]/70 mb-1.5 uppercase tracking-wide">Full Name</label>
+                                <input type="text" required value="Sarasindu Chirantha" class="w-full bg-[#1a060e] border plum-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#dfb3b5] focus:bg-[#35101f] transition-colors text-white">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs text-[#f7ecec]/70 mb-1.5 uppercase tracking-wide">Email</label>
+                                    <input type="email" required class="w-full bg-[#1a060e] border plum-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#dfb3b5] focus:bg-[#35101f] transition-colors text-white" placeholder="sarasindu@example.com">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-[#f7ecec]/70 mb-1.5 uppercase tracking-wide">Phone (LK)</label>
+                                    <input type="tel" required class="w-full bg-[#1a060e] border plum-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#dfb3b5] focus:bg-[#35101f] transition-colors text-white" placeholder="07X XXX XXXX">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-[#f7ecec]/70 mb-1.5 uppercase tracking-wide">Delivery Address</label>
+                                <input type="text" required class="w-full bg-[#1a060e] border plum-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#dfb3b5] focus:bg-[#35101f] transition-colors text-white" placeholder="Street Address, City, Postal Code">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div>
+                        <h4 class="text-xs font-bold text-[#dfb3b5] uppercase tracking-widest mb-4">Payment Method</h4>
+                        <div class="space-y-3">
+                            
+                            <!-- PayHere -->
+                            <label class="flex items-center justify-between p-4 border plum-border rounded-lg cursor-pointer hover:bg-[#35101f] transition-colors has-[:checked]:border-[#dfb3b5] has-[:checked]:bg-[#35101f] group">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="payment_method" value="payhere" checked class="w-4 h-4 text-[#dfb3b5] bg-[#1a060e] border-[#4f1b2f] focus:ring-[#dfb3b5] focus:ring-offset-[#260a15] accent-[#dfb3b5]">
+                                    <div>
+                                        <span class="block text-sm font-medium text-white">PayHere</span>
+                                        <span class="block text-xs text-[#f7ecec]/50 mt-0.5">Credit / Debit Cards (Visa, Mastercard)</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
+                                    <div class="w-8 h-5 bg-[#1a060e] border plum-border rounded flex items-center justify-center text-[8px] font-bold text-[#dfb3b5]">VISA</div>
+                                    <div class="w-8 h-5 bg-[#1a060e] border plum-border rounded flex items-center justify-center text-[8px] font-bold text-[#dfb3b5]">MC</div>
+                                </div>
+                            </label>
+
+                            <!-- Koko / MintPay -->
+                            <label class="flex items-center justify-between p-4 border plum-border rounded-lg cursor-pointer hover:bg-[#35101f] transition-colors has-[:checked]:border-[#dfb3b5] has-[:checked]:bg-[#35101f]">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="payment_method" value="bnpl" class="w-4 h-4 text-[#dfb3b5] bg-[#1a060e] border-[#4f1b2f] focus:ring-[#dfb3b5] focus:ring-offset-[#260a15] accent-[#dfb3b5]">
+                                    <div>
+                                        <span class="block text-sm font-medium text-white">Koko / MintPay</span>
+                                        <span class="block text-xs text-[#f7ecec]/50 mt-0.5">Buy Now, Pay Later (3 Installments)</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] bg-[#dfb3b5]/10 text-[#dfb3b5] px-2 py-1 rounded uppercase font-bold tracking-wider">BNPL</span>
+                            </label>
+
+                            <!-- Bank Transfer -->
+                            <label class="flex items-center justify-between p-4 border plum-border rounded-lg cursor-pointer hover:bg-[#35101f] transition-colors has-[:checked]:border-[#dfb3b5] has-[:checked]:bg-[#35101f]">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="payment_method" value="bank" class="w-4 h-4 text-[#dfb3b5] bg-[#1a060e] border-[#4f1b2f] focus:ring-[#dfb3b5] focus:ring-offset-[#260a15] accent-[#dfb3b5]">
+                                    <div>
+                                        <span class="block text-sm font-medium text-white">Direct Bank Transfer</span>
+                                        <span class="block text-xs text-[#f7ecec]/50 mt-0.5">Transfer directly to our local bank account</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- COD -->
+                            <label class="flex items-center justify-between p-4 border plum-border rounded-lg cursor-pointer hover:bg-[#35101f] transition-colors has-[:checked]:border-[#dfb3b5] has-[:checked]:bg-[#35101f]">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="payment_method" value="cod" class="w-4 h-4 text-[#dfb3b5] bg-[#1a060e] border-[#4f1b2f] focus:ring-[#dfb3b5] focus:ring-offset-[#260a15] accent-[#dfb3b5]">
+                                    <div>
+                                        <span class="block text-sm font-medium text-white">Cash on Delivery</span>
+                                        <span class="block text-xs text-[#f7ecec]/50 mt-0.5">Pay in cash when your order arrives</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] bg-[#dfb3b5]/10 text-[#dfb3b5] px-2 py-1 rounded uppercase font-bold tracking-wider">COD</span>
+                            </label>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="p-6 border-t border-[#dfb3b5]/20 bg-[#1a060e]">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-sm text-[#f7ecec]/70">Total to pay</span>
+                    <span id="checkout-total-display" class="text-xl font-bold rose-gold-text playfair">LKR 0</span>
+                </div>
+                <button type="submit" form="checkout-form" class="w-full py-4 rose-gold-bg text-[#260a15] font-bold uppercase tracking-widest text-xs rounded-full hover:bg-white transition-colors">
+                    Place Order
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-[#dfb3b5] text-[#260a15] px-6 py-3 rounded-full shadow-2xl z-[60] text-xs font-bold tracking-widest uppercase transition-all duration-300 translate-y-20 opacity-0 pointer-events-none">
+        Added to Cart
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#4f1b2f] bg-[#1a060e] py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <h3 class="playfair text-xl font-bold tracking-widest uppercase rose-gold-text mb-1">NOVAWEAR</h3>
+                <p class="text-xs text-[#f7ecec]/50 uppercase tracking-widest">by Sidu</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="https://www.instagram.com/novawear_by_sidu" target="_blank" class="text-[#f7ecec]/50 hover:text-[#dfb3b5] transition-colors text-sm uppercase tracking-wide font-medium flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    Follow on Instagram
+                </a>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-[10px] text-[#f7ecec]/30 uppercase tracking-widest">
+            &copy; 2026 NOVAWEAR. Elegance redefined.
+        </div>
+    </footer>
+
+    <script>
+        // Updated Product Data referencing exact local files
+        const products = [
+            { id: 1, name: "Classic Puff Sleeve Frock", price: 2990, img: "WhatsApp Image 2026-10-21 at 9.12.58 PM (1).jpeg", desc: "Available in Red, Black, White, and Pink." },
+            { id: 2, name: "Elegant V-Neck Slip Dress", price: 2990, img: "WhatsApp Image 2026-10-21 at 9.13.26 PM (1).jpeg", desc: "Premium Dark Maroon finish." },
+            { id: 3, name: "Sweetheart Maxi Dress", price: 2990, img: "WhatsApp Image 2026-10-21 at 9.14.09 PM (1).jpeg", desc: "Available in Hot Pink, Black, Dark Maroon, and White." },
+            { id: 4, name: "Ruched Tie-Side Dress", price: 2990, img: "WhatsApp Image 2026-10-21 at 9.14.29 PM.jpeg", desc: "Featuring adjustable side ties in Burgundy." }
+        ];
+
+        let cart = [];
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+        });
+
+        // Render Product Grid
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = products.map(product => `
+                <div class="group cursor-pointer flex flex-col">
+                    <div class="relative aspect-[3/4] bg-[#1a060e] rounded-xl overflow-hidden mb-5 border border-[#4f1b2f]/50">
+                        <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.src='https://placehold.co/600x800/35101f/dfb3b5?text=Product+Image'">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <button onclick="addToCart(${product.id})" class="w-full bg-[#dfb3b5]/90 backdrop-blur-md text-[#260a15] py-3 rounded-lg font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="playfair text-lg font-bold text-white tracking-wide mb-1">${product.name}</h3>
+                            <p class="text-xs text-[#f7ecec]/60 mb-3 leading-relaxed font-light">${product.desc}</p>
+                        </div>
+                        <p class="text-sm font-medium rose-gold-text">LKR ${product.price.toLocaleString()}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Cart Functions
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast('Item Added');
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItems = document.getElementById('cart-items');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            const checkoutTotal = document.getElementById('checkout-total-display');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            // Update Count Badge
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            cartCount.classList.toggle('hidden', totalItems === 0);
+
+            // Update Total
+            const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const formattedTotal = `LKR ${totalAmount.toLocaleString()}`;
+            cartTotal.textContent = formattedTotal;
+            checkoutTotal.textContent = formattedTotal;
+
+            // Render Items
+            if (cart.length === 0) {
+                cartItems.innerHTML = '';
+                cartItems.appendChild(emptyMsg);
+                emptyMsg.style.display = 'block';
+                checkoutBtn.disabled = true;
+            } else {
+                emptyMsg.style.display = 'none';
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex gap-4 plum-panel p-3 rounded-xl border plum-border">
+                        <img src="${item.img}" alt="${item.name}" class="w-16 h-20 object-cover rounded-lg" onerror="this.src='https://placehold.co/100x120/1a060e/dfb3b5?text=Img'">
+                        <div class="flex-1 flex flex-col justify-center">
+                            <h4 class="playfair text-sm font-bold text-white tracking-wide line-clamp-1">${item.name}</h4>
+                            <p class="text-xs text-[#dfb3b5] mt-1">LKR ${item.price.toLocaleString()} × ${item.quantity}</p>
+                            <div class="mt-2">
+                                <button onclick="removeFromCart(${item.id})" class="text-[10px] text-[#f7ecec]/40 hover:text-white uppercase tracking-wider font-bold transition-colors">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                checkoutBtn.disabled = false;
+            }
+        }
+
+        // UI Toggles
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const checkoutModal = document.getElementById('checkout-modal');
+
+        function toggleCart() {
+            const isOpen = cartSidebar.classList.contains('translate-x-0');
+            
+            if (isOpen) {
+                cartSidebar.classList.remove('translate-x-0');
+                cartSidebar.classList.add('translate-x-full');
+                cartOverlay.classList.add('hidden', 'opacity-0');
+                cartOverlay.classList.remove('opacity-100');
+            } else {
+                cartSidebar.classList.remove('translate-x-full');
+                cartSidebar.classList.add('translate-x-0');
+                cartOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    cartOverlay.classList.add('opacity-100');
+                    cartOverlay.classList.remove('opacity-0');
+                }, 10);
+            }
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) return;
+            toggleCart();
+            checkoutModal.classList.remove('hidden');
+        }
+
+        function closeCheckout() {
+            checkoutModal.classList.add('hidden');
+        }
+
+        // Checkout Process
+        function processOrder(e) {
+            e.preventDefault();
+            
+            const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+            
+            const btn = document.querySelector('#checkout-form button[type="submit"]') || document.querySelector('button[form="checkout-form"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                
+                alert(`Order Placed Successfully!\n\nThank you, Sarasindu Chirantha.\nPayment Method: ${paymentMethod.toUpperCase()}`);
+                
+                cart = [];
+                updateCartUI();
+                closeCheckout();
+            }, 1500);
+        }
+
+        // Toast Notification
+        let toastTimeout;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
